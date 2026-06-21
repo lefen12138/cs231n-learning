@@ -1,25 +1,57 @@
-# 🧠 CS231n Learning Notes
+# cs231n\-learning 个人零基础深度学习视觉学习仓库
 
-> 斯坦福大学 [CS231n: Deep Learning for Computer Vision](http://cs231n.stanford.edu/) 课程学习记录
->
-> 本仓库收录课程讲义笔记、课后作业实现及前置环境配置，供个人学习与复习使用。
+## 仓库概述
 
-![Language](https://img.shields.io/badge/Language-Python-blue)
-![Notebook](https://img.shields.io/badge/Jupyter_Notebook-90%25-orange)
-![Commits](https://img.shields.io/badge/Commits-40-green)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+**机器学习入门者**学习存档，记录从零开始学习斯坦福CS231n计算机视觉公开课的踩坑笔记、作业代码、自身学习复盘与迭代优化方案。
 
 ---
 
-## 📖 课程简介
+## 学习复盘
 
-**CS231n** 是斯坦福大学开设的深度学习与计算机视觉旗舰课程，系统讲授卷积神经网络（CNN）的理论基础与工程实践，覆盖图像分类、目标检测、语义分割、生成模型、视频理解等前沿方向，是计算机视觉领域最具影响力的公开课之一。
+### 1\. 定制学习方案
+
+因为此前未接触机器学习、深度学习相关知识，在最初面对任务时没有抓手，所以入门初期依托AI定制零基础学习计划，计划文档详见仓库 `plan.md`
+
+### 2\. 开发环境选型与踩坑
+
+- 此前在虚拟机Ubuntu中用OpenCV有些问题问题；且之前重装电脑系统，过往虚拟机环境全部作废，重复配置、耗时长。
+
+- 这次改用wsl；conda工具选用轻量化Miniconda，简化环境搭建、依赖安装流程，我想把课余时间重心放在知识点学习、代码实操，而非环境调试上。
+
+### 3\. CS231n课程学习路径与感受
+
+1. 一开始看CS231n机翻课程，沿用AI定制的笔记格式整理知识点；因为英文薄弱、机翻字幕语义有偏差，一节课学习时长3\-4h，学习效低。
+
+2. 学习至CNN章节后，找到同济子豪兄中文译讲版本；但CNN之后，子豪兄课程目录、知识点进度和斯坦福原版课程无法对齐，无法衔接原版课后作业，又更换学习渠道。
+
+3. 我尝试利用作业去学习，其中遇到的代码看不懂就问豆包，调试遇到的问题豆包帮我分析，之后由我自己逐一排查；因为一开始不了解tmux自带日志记录功能，全程使用语雀文档\+截图留存课堂笔记、报错日志、解题思路
+
+4. 之后，我按照CS231n每节课知识点，找B站对应中文讲解视频，同时学习台大李宏毅深度学习公开课；依旧存在知识点进度、课程体系和CS231n原版错位问题，无法适配原版作业。
+
+5. 最后，我直接看PPT；疑难知识点、专业概念不懂的问AI。
 
 ---
 
-## 📂 仓库结构
+## 学习问题复盘
 
-```
+1. **有点死脑筋**
+因为要完成CS231n作业，所以执念必须吃透CS231n原版课程，耗费大量时间适配晦涩英文课程；忽略李宏毅公开课优势：中文授课通俗易懂、课件英文可循序渐进提升专业英语能力，双线并行学习效率会更高。
+
+2. **理论偏重过多，代码实操练习缺失**
+单节课听课、翻译、整理笔记占用全部课余时间，为追赶课程进度，仅理解算法原理、公式逻辑，缺少自主手写代码、拓展调试练习；知识点留存度低，隔段时间易遗忘代码实现细节。
+
+3. **工具使用滞后**
+中后期才知晓tmux日志记录功能，前期笔记、报错记录方式低效，增加复盘成本。
+
+---
+
+## 假期留校后，拥有整块学习时间，想补充学习些台大李宏毅机器学习
+
+---
+
+## 仓库结构
+
+```Plain Text
 cs231n-learning/
 ├── Assignment/                        # 课程作业
 │   ├── softmax.ipynb                  # 作业：Softmax 线性分类器
@@ -49,102 +81,48 @@ cs231n-learning/
 └── Environment_Setup.md              # 环境配置指南
 ```
 
----
+## 讲义笔记概览
 
-## 📝 讲义笔记概览
-
-| 模块 | 主题 | 关键内容 |
-|------|------|---------|
-| 🖼️ 图像分类 | 线性分类器图像分类 | KNN、SVM、Softmax、线性分类原理 |
-| 🔢 优化基础 | 损失函数与优化 | 梯度下降、SGD、Momentum、Adam |
-| 🧬 神经网络 | 神经网络 / 训练优化调参 | 反向传播、激活函数、Dropout、BN |
-| 🏗️ 网络构建 | neural-networks 构建 | 网络设计范式、模块化搭建 |
-| 📷 卷积网络 | CNN | 卷积层、池化层、经典架构（VGG / ResNet 等） |
-| 🔁 循环网络 | RNN | LSTM、GRU、序列建模 |
-| 🎯 注意力 | 注意力机制与 Transformer | Self-Attention、多头注意力、ViT |
-| 🎨 生成模型 | 生成模型 | GAN、VAE、扩散模型基础 |
-| 🔍 检测与分割 | 语义分割、图像检测、可视化 | RCNN系列、YOLO、FCN、特征可视化 |
-| 🤖 自监督 | Self-Supervised Learning | 对比学习、MoCo、SimCLR |
-| 🎬 视频 | Video Understanding | 时序建模、3D CNN、双流网络 |
-| 🌐 3D 视觉 | 3D Vision | 点云、NeRF、3D 表示方法 |
-| 🗣️ 视觉语言 | 视觉-语言模型 & 基础大模型 | CLIP、DALL·E、多模态大模型 |
-| ⚡ 分布式 | 大规模分布式训练 | 数据并行、模型并行、混合精度 |
+| 方向 | 主题 | 内容 |
+| ---- | ---- | ---- |
+| 循环网络 | RNN | LSTM、GRU、序列建模 |
+| 注意力 | 注意力机制与 Transformer | Self-Attention、多头注意力、ViT |
+| 生成模型 | 生成模型 | GAN、VAE、扩散模型基础 |
+| 检测与分割 | 语义分割、图像检测、可视化 | RCNN系列、YOLO、FCN、特征可视化 |
+| 自监督 | Self-Supervised Learning | 对比学习、MoCo、SimCLR |
+| 视频 | Video Understanding | 时序建模、3D CNN、双流网络 |
+| 3D 视觉 | 3D Vision | 点云、NeRF、3D 表示方法 |
+| 视觉语言 | 视觉-语言模型 & 基础大模型 | CLIP、DALL·E、多模态大模型 |
+| 分布式 | 大规模分布式训练 | 数据并行、模型并行、混合精度 |
 
 ---
 
-## 📋 作业实现
+## 作业笔记
 
-| 文件 | 内容描述 |
-|------|---------|
-| `softmax.ipynb` | Softmax 分类器的从零实现，包含损失计算（cross-entropy）与梯度推导 |
-| `two_layer_net.ipynb` | 两层全连接神经网络的前向传播、反向传播及超参数调优 |
-
----
-
-## 🛠️ 环境配置
-
-详见 [`Environment_Setup.md`](./Environment_Setup.md)，主要包括：
-
-- Python 3.x 环境安装（建议使用 Anaconda / Miniconda）
-- 依赖库安装（NumPy、Matplotlib、Jupyter Notebook 等）
-- cs231n 课程代码包的本地配置
-
-**快速启动：**
-
-```bash
-# 克隆仓库
-git clone https://github.com/lefen12138/cs231n-learning.git
-cd cs231n-learning
-
-# 创建虚拟环境（推荐）
-conda create -n cs231n python=3.9
-conda activate cs231n
-
-# 安装依赖
-pip install numpy matplotlib jupyter ipython
-
-# 启动 Jupyter Notebook
-jupyter notebook
-```
+|文件|内容描述|
+|---|---|
+|`softmax.ipynb`|Softmax 分类器的从零实现，包含损失计算（cross\-entropy）与梯度推导|
+|`two_layer_net.ipynb`|两层全连接神经网络的前向传播、反向传播及超参数调优|
 
 ---
 
-## 🔧 工具笔记
+## 环境配置
+
+详见 `[Environment_Setup.md](./Environment_Setup.md)`，主要包括：
+
+- Miniconda配置及问题
+
+- wsl安装配置及问题
+
+---
+
+## 工具笔记
 
 学习过程中整理的基础工具使用笔记，位于 `Learning of basic command tools/`：
 
 - **Linux 常用命令**：文件操作、权限管理、进程管理、网络命令
+
 - **tmux**：终端复用工具的安装与常用快捷键，适合远程服务器训练模型时使用
 
 ---
 
-## 🚀 学习路线建议
-
-```
-线性分类器 → 损失函数与优化 → 神经网络 → CNN
-    → RNN → 注意力机制 & Transformer
-        → 生成模型 / 自监督学习 / 视觉语言模型
-            → 目标检测 / 语义分割 / 3D Vision / 视频理解
-```
-
----
-
-## 📚 参考资源
-
-- 🌐 [CS231n 官方网站](http://cs231n.stanford.edu/)
-- 📺 [课程视频（YouTube）](https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv)
-- 📖 [CS231n 课程笔记（英文）](https://cs231n.github.io/)
-- 🐍 [NumPy 官方文档](https://numpy.org/doc/)
-
----
-
-## 📄 License
-
-本仓库内容为个人学习笔记整理，课程原版材料版权归斯坦福大学所有。
-仓库代码部分采用 [MIT License](./LICENSE) 开源协议。
-
----
-
-<div align="center">
-  <i>持续更新中 · 欢迎 Star ⭐ 和交流</i>
-</div>
